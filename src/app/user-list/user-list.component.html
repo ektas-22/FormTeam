@@ -1,0 +1,67 @@
+<!-- user-list.component.html -->
+
+<div class="search-filters">
+  <input type="text" placeholder="Search by Name" [(ngModel)]="searchName" (input)="loadUsers()">
+  
+  <label for="domainFilter">Domain:</label>
+  <select id="domainFilter" [(ngModel)]="filters.domain" (change)="loadUsers()">
+    <option value="">All</option>
+    <option *ngFor="let domain of getUniqueDomains()" [value]="domain">{{ domain }}</option>
+  </select>
+
+  <label for="genderFilter">Gender:</label>
+  <select id="genderFilter" [(ngModel)]="filters.gender" (change)="loadUsers()">
+    <option value="">All</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+
+  <label for="availabilityFilter">Availability:</label>
+  <select id="availabilityFilter" [(ngModel)]="filters.availability" (change)="loadUsers()">
+    <option value="">All</option>
+    <option value="Available">Available</option>
+    <option value="Busy">Busy</option>
+  </select>
+</div>
+
+<div class="container">
+  <!-- User List -->
+  <div *ngIf="!showTeamDetails" class="user-list-container">
+    <div *ngFor="let user of users" class="user-card">
+      <div class="user-card-inner">
+        <img [src]="user.avatar" alt="User Avatar" class="avatar">
+        <div class="user-details">
+          <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+          <p>Email: {{ user.email }}</p>
+          <p>Gender: {{ user.gender }}</p>
+          <p>Domain: {{ user.domain }}</p>
+          <p>Availability: {{ user.available ? 'Available' : 'Busy' }}</p>
+        </div>
+        <label>
+          <input type="checkbox" [(ngModel)]="user.selected"> Select
+        </label>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1" class="pagination-btn">Previous</button>
+      <span>Page {{ currentPage }}</span>
+      <button (click)="nextPage()" class="pagination-btn">Next</button>
+    </div>
+
+    <div>
+      <button (click)="createTeam()" class="create-team-btn">Create Team</button>
+    </div>
+  </div>
+
+  <!-- Team Details -->
+  <div *ngIf="showTeamDetails" class="team-details">
+    <h2>Team Details</h2>
+    <p>Domain: {{ teamDetails.domain }}</p>
+    <h3>Members:</h3>
+    <ul>
+      <li *ngFor="let member of teamDetails.members">{{ member.first_name }} {{ member.last_name }}</li>
+    </ul>
+    <button (click)="closeTeamDetails()">Back</button>
+  </div>
+</div>

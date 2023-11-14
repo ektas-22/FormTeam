@@ -1,0 +1,111 @@
+
+.search-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.user-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.user-card {
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.user-card:hover {
+  transform: scale(1.05);
+}
+
+.user-card-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.user-details {
+  margin-top: 10px;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+.create-team-btn {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Add this class to style the checkbox */
+.user-card-inner label {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.user-card-inner input {
+  margin-right: 5px;
+}
+
+/* Style the pagination buttons */
+.pagination button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Style the search input and filters */
+.search-filters input,
+.search-filters select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-filters select {
+  width: 100px;
+}
+
+.pagination span {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+.container {
+  position: relative;
+}
+
+.user-list-container,
+.team-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.team-details {
+  background-color: white; /* Adjust as needed */
+  z-index: 1;
+}
